@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Bitcoin Dashboard</title>
+    <meta charset="UTF-8">
+    <style>
+        body { font-family: Arial; margin: 20px; }
+        h1 { color: #f7931a; }
+        table, th, td { border: 1px solid #ccc; border-collapse: collapse; padding: 8px; }
+    </style>
+</head>
+<body>
+<h1>💰 Bitcoin Dashboard</h1>
+
+<p>Prezzo attuale: <strong th:text="${currentPrice} + ' USD'">...</strong></p>
+
+<h2>Storico prezzi</h2>
+<table>
+    <thead>
+    <tr>
+        <th>Prezzo (USD)</th>
+        <th>Timestamp</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="price : ${history}">
+        <td th:text="${price.price}">0.0</td>
+        <td th:text="${#dates.format(price.timestamp, 'yyyy-MM-dd HH:mm:ss')}">...</td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
